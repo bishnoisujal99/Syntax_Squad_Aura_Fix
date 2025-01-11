@@ -25,11 +25,7 @@ const {
   app.use(express.json());
   
   app.use(express.urlencoded());
-  
-  
-  app.listen(port,()=>{
-    console.log(`Server is running at http://localhost:${port}`);
-  });
+  app.use(cors());
   
   app.post('/',(req,res) =>{
     prompt = req.body.prompt;
@@ -129,4 +125,8 @@ const {
       res.json(result.response.text());
     }
     run();
+  });
+
+  app.listen(port,()=>{
+    console.log(`Server is running at http://localhost:${port}`);
   });
