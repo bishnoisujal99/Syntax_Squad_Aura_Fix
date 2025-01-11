@@ -4,6 +4,7 @@ const {
     HarmBlockThreshold,
   } = require("@google/generative-ai");
   require("dotenv").config();
+  const cors = require('cors');
   const express = require('express');
   const port = process.env.PORT;
   const api_key=process.env.API_KEY;
