@@ -24,8 +24,6 @@ const {
   
   app.use(express.json());
   
-  app.use(express.static('public'));
-  
   app.use(express.urlencoded());
   
   
@@ -33,7 +31,7 @@ const {
     console.log(`Server is running at http://localhost:${port}`);
   });
   
-  app.post('/api',(req,res) =>{
+  app.post('/',(req,res) =>{
     prompt = req.body.prompt;
     async function run() {
       const chatSession = model.startChat({
