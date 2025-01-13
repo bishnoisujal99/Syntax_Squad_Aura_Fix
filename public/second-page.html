@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/second-page.css">
+    <title>second page</title>
+</head>
+<body>
+
+    <header>
+        <a href="../index.html" class="logo"><img src="./images/logo.jpg" height="180px" width="180px"></a>
+        <nav>
+            <a href="./law-facts.html">Law Facts</a>
+            <a href="./blog.html">Blog</a>
+            <a href="./about_us.html">About-us</a>
+            <a href="./contact_us.html">Contact</a>
+            <a class="menu"></a>
+        </nav>
+    </header>
+    <div style="height: 14vh;"></div>
+    
+    <div id="container">
+        <div class="wrapper">
+            <div class="input-box" style="width:500px">
+                <input type="text" placeholder="Ask AI" id="inputData"
+                required style="font-size: 1.5rem; width: 30vw; border: none; outline: none; margin-left: 20px; margin-right: 20px;">
+            </div>
+            <div>
+                <button class="generate-btn" onclick="run()">Generate</button>
+            </div>
+        </div>  
+    </div>
+    <p style="font-size: 2rem; color: black;" id="outputText">output</p>
+</body>
+<script>
+    let inputData = document.getElementById("inputData");
+    const output = document.getElementById("outputText");
+    const button = document.getElementById("send");
+
+    async function run() {
+        let obj={
+            prompt:inputData.value
+        };
+
+        fetch('https://syntax-squad-aura-fix.onrender.com',{
+            method:"POST",
+            headers:{
+                "Content-type":"application/json"
+            },
+            body:JSON.stringify(obj)
+        })
+        .then(response => response.json())
+        .then(out => {
+            output.innerHTML = out;
+        });
+    }   
+</script>
+</html>
