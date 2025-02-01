@@ -26,7 +26,7 @@ let prompt = "";
 app.use(express.json());
 
 app.use(cors({
-  origin: 'https://bishnoisujal99.github.io/Syntax_Squad_Aura_fix'
+  origin: 'https://bishnoisujal99.github.io'
 }));
 
 app.use(express.static('public'));
@@ -35,7 +35,7 @@ app.listen(port,()=>{
   console.log(`Server is running at http://localhost:${port}`);
 });
 
-app.post('/api',(req,res) =>{
+app.post('/',(req,res) =>{
   prompt = req.body.prompt;
   async function run() {
     const chatSession = model.startChat({
