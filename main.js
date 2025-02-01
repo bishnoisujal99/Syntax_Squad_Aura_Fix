@@ -5,6 +5,7 @@ const {
 } = require("@google/generative-ai");
 require("dotenv").config();
 const express = require('express');
+const cors = require('cors');
 const port = process.env.PORT;
 const api_key=process.env.API_KEY;
 const app = express();
@@ -23,6 +24,10 @@ const generationConfig = {
 let prompt = "";
 
 app.use(express.json());
+
+app.use(cors({
+  origin: 'https://bishnoisujal99.github.io/Syntax_Squad_Aura_fix'
+}));
 
 app.use(express.static('public'));
 
